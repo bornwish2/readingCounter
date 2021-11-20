@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IChangePassword } from 'interfaces/inon-manage';
 import { IObjectIteratation } from 'interfaces/ioverall-config';
@@ -18,7 +19,7 @@ export class ProfileComponent extends FactoryONE {
   _selectCols: IObjectIteratation[];
 
   constructor(
-     
+
     private profileService: ProfileService,
     private closeTabService: CloseTabService
   ) {
@@ -44,8 +45,8 @@ export class ProfileComponent extends FactoryONE {
     this.password.newPassword = '';
     this.password.oldPassword = '';
   }
-  changePassword = () => {
-    this.profileService.changePassword(this.password);
+  changePassword = (form: NgForm) => {
+    this.profileService.changePassword(form.value);
     this.toDefaultPassword();
   }
   getSelectedColumns = () => {
