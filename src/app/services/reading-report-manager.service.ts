@@ -186,7 +186,19 @@ export class ReadingReportManagerService {
     { field: 'reportTitle', header: 'گزارش', isSelected: true, readonly: true },
     { field: 'offloadDateJalali', header: 'روز', isSelected: true, readonly: true },
     { field: 'counterSerial', header: 'سریال کنتور', isSelected: false, readonly: true },
-    { field: 'possibleCounterSerial', header: 'سریال پیمایش', isSelected: false, readonly: true }
+    { field: 'possibleCounterSerial', header: 'سریال پیمایش', isSelected: false, readonly: true },
+    { field: 'toDate', header: 'تا', isSelected: false, readonly: true },
+    { field: 'itemQuantity', header: 'مقدار', isSelected: false, readonly: true },
+    { field: 'alalHesabPercent', header: 'درصد علی الحساب', isSelected: false, readonly: true },
+    { field: 'imagePercent', header: 'درصد تصویر', isSelected: false, readonly: true },
+    { field: 'displayBillId', header: 'شماره قبض', isSelected: false, readonly: true },
+    { field: 'displayRadif', header: 'ردیف', isSelected: false, readonly: true },
+    { field: 'counterReaderName', header: 'نام مامور', isSelected: false, readonly: true },
+    { field: 'hasMap', header: 'دارای نقشه', isSelected: false, readonly: true },
+    { field: 'description', header: 'توضیحات', isSelected: false, readonly: true },
+    { field: 'x', header: 'x', isSelected: false, readonly: true },
+    { field: 'y', header: 'y', isSelected: false, readonly: true },
+
   ]
   private _RRTraverse = [
     { field: 'billId', header: 'شناسه قبض', isSelected: false, readonly: true },
@@ -318,7 +330,7 @@ export class ReadingReportManagerService {
     { field: 'postalCode', header: 'کد پستی', isSelected: false },
     { field: 'preAverage', header: 'میانگین قبلی', isSelected: false },
     { field: 'counterSerial', header: 'سریال کنتور', isSelected: false },
-    // { field: 'counterStateId', header: 'کد وضعیت کنتور', isSelected: false },      
+    // { field: 'counterStateId', header: 'کد وضعیت کنتور', isSelected: false },
     { field: 'counterInstallDate', header: 'تاریخ نصب', isSelected: false },
     { field: 'tavizDate', header: 'تاریخ تعویض', isSelected: false },
     { field: 'tavizNumber', header: 'ش تعویض', isSelected: false },
@@ -376,7 +388,7 @@ export class ReadingReportManagerService {
     { field: 'postalCode', header: 'کد پستی', isSelected: false },
     { field: 'preAverage', header: 'میانگین قبلی', isSelected: false },
     { field: 'counterSerial', header: 'سریال کنتور', isSelected: false },
-    // { field: 'counterStateId', header: 'کد وضعیت کنتور', isSelected: false },      
+    // { field: 'counterStateId', header: 'کد وضعیت کنتور', isSelected: false },
     { field: 'counterInstallDate', header: 'تاریخ نصب', isSelected: false },
     { field: 'tavizDate', header: 'تاریخ تعویض', isSelected: false },
     { field: 'tavizNumber', header: 'ش تعویض', isSelected: false },
@@ -500,7 +512,7 @@ export class ReadingReportManagerService {
   }
   getQotrDictionary = () => {
     return this.dictionaryWrapperService.getQotrDictionary();
-  }  
+  }
 
 
   private datesValidation = (dataSource: object): boolean => {
@@ -564,7 +576,7 @@ export class ReadingReportManagerService {
     return true;
   }
 
-  // VerificationS 
+  // VerificationS
   verificationRRShared = (readingReportReq: any, isValidateByDate: boolean): boolean => {
     readingReportReq.fromDate = Converter.persianToEngNumbers(readingReportReq.fromDate);
     readingReportReq.toDate = Converter.persianToEngNumbers(readingReportReq.toDate);
@@ -591,7 +603,7 @@ export class ReadingReportManagerService {
     return isValidateByDate ? this.datesValidation(readingReportReq) : this.periodValidations(readingReportReq)
   }
 
-  // 
+  //
   // snack bar
   emptyMessage = () => {
     this.utilsService.snackBarMessageFailed(EN_messages.notFound);
