@@ -1,0 +1,21 @@
+<form #form="ngForm" (ngSubmit)="connectToServer()">
+  <section>
+
+      <div class="input_2">
+          <div class="_key">کاربر</div>
+          <mat-select placeholder="انتخاب مورد" [(ngModel)]="agentId" name="zoneId">
+            <input class="input_3 mat-option-text" placeholder="جستجو بر اساس کد" [(ngModel)]="searchTerm">
+            <mat-option
+            *ngFor="let user of users | filter:searchTerm:'username'"
+            [value]="user.username" >{{ user.displayName }}
+            </mat-option>
+          </mat-select>
+      </div>
+
+      <button type="submit" class="btn_1">
+          دانلود فایل
+          <i class="pi pi-download"></i>
+      </button>
+
+  </section>
+</form>

@@ -7,6 +7,7 @@ import { EN_messages } from 'interfaces/enums.enum';
 import { IOutputManager } from 'interfaces/imanage';
 import { IOffloadModifyReq } from 'interfaces/inon-manage';
 import { ENSelectedColumnVariables, IObjectIteratation, IResponses } from 'interfaces/ioverall-config';
+import { promise } from 'protractor';
 import { InterfaceManagerService } from 'services/interface-manager.service';
 import { Converter } from 'src/app/classes/converter';
 
@@ -17,6 +18,7 @@ import { IEditTracking, IOffLoadPerDay, ITracking } from '../Interfaces/itrackin
 import { OffloadModify } from './../classes/offload-modify-type';
 import { DictionaryWrapperService } from './dictionary-wrapper.service';
 import { UtilsService } from './utils.service';
+import { EnvService } from './env.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +33,7 @@ export class TrackingManagerService {
     { field: 'counterReaderName', header: 'مامور', isSelected: true },
     { field: 'trackStatusTitle', header: 'وضعیت', isSelected: true },
     { field: 'seen', header: 'دیده شده', isSelected: true, isBoolean: true },
-    // { field: 'inserterCode', header: 'کد کاربر', isSelected: false },    
+    // { field: 'inserterCode', header: 'کد کاربر', isSelected: false },
     // { field: 'hasDetails', header: 'جزئیات' },
   ]
   columnFollowUpView = (): IObjectIteratation[] => {
@@ -222,7 +224,19 @@ export class TrackingManagerService {
       })
     });
   }
-  // Output manager 
+  // Output manager
+
+  downloadAgentData = (agentId: string): Promise<any> =>{
+    return new Promise((resolve) => {
+      this.interfaceManagerService.GETBLOB(ENInterfaces.DownloadAgentData,agentId).toPromise()
+      .then(res => {
+        resolve(res);
+      }).catch(()=>{
+        this.utilsService.snackBarMessageFailed(EN_messages.server_noDataFounded);
+      })
+    });
+  }
+
   downloadOutputDBF = (dbfData: ITracking | IOutputManager): Promise<any> => {
     dbfData.fromDate = Converter.persianToEngNumbers(dbfData.fromDate);
     dbfData.toDate = Converter.persianToEngNumbers(dbfData.toDate);
@@ -261,7 +275,7 @@ export class TrackingManagerService {
       })
     })
   }
-  // 
+  //
   successSnackMessage = (message: string) => {
     this.utilsService.snackBarMessageSuccess(message);
   }
@@ -349,7 +363,7 @@ export class TrackingManagerService {
     }
     return a;
   }
-  //  
+  //
   selectedItems = (_selectors: any[]): any[] => {
     const a = [];
     _selectors.filter(items => {

@@ -21,7 +21,7 @@ export class UserAddComponent extends FactoryONE {
 
   constructor(
     private userAddManagerService: UserAddManagerService,
-     
+
     private closeTabService: CloseTabService
   ) {
     super();
@@ -40,7 +40,7 @@ export class UserAddComponent extends FactoryONE {
       this.dataSource = await this.userAddManagerService.getUserAdd();
       this.closeTabService.saveDataForAddUsers = this.dataSource;
     }
-
+    console.log("dataSource",this.dataSource);
     this.roleItemsData = this.dataSource.roleItems;
     this.userAppItems = this.dataSource.appItems;
     this.provinceItemsData = this.dataSource.provinceItems;

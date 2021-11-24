@@ -106,6 +106,8 @@ export enum ENEssentialsToSave {
     saveDataForFragmentNOBDetails = 'saveDataForFragmentNOBDetails',
     saveDataForRRGallery = 'saveDataForRRGallery',
     saveDataForRRGalleryReq = 'saveDataForRRGalleryReq',
+    saveDataForAgentLoad = 'saveDataForAgentLoad',
+
 }
 export interface ITestSidebar {
     routerUrl: string;

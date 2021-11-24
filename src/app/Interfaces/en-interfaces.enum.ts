@@ -1,4 +1,7 @@
 export enum ENInterfaces {
+
+    DownloadAgentData = '/V1/Load/Manual',
+
     AuthLevel4GET = 'V1/AuthLevel4/all',
     AuthLevel4DICTIONARY = 'V1/AuthLevel4/Dictionary',
     AuthLevel4REMOVE = 'V1/AuthLevel4/Remove',

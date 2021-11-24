@@ -8,13 +8,13 @@ export class CloseTabService {
   /* TAB WRAPPER */
   tabs: ITabs[] = [];
 
-  // Formular s 
+  // Formular s
   saveDataForWaterFormula: any;
   saveDataForBadgetFormula: any;
   saveDataForTabsare2Formula: any;
   saveDataForTabsare3Formula: any;
-  // 
-  // save data when route change 
+  //
+  // save data when route change
   saveDataForAppLevel1: any;
   saveDataForAppLevel2: any;
   saveDataForAppLevel3: any;
@@ -73,7 +73,7 @@ export class CloseTabService {
   saveDataForWOUI: any;
   // dbf output manager
   saveDataForOutputDBF: any;
-  // reading reports 
+  // reading reports
   saveDataForRRTraverse: any;
   saveDataForRRTraverseDifferential: any;
   saveDataForRRKarkard: any;
@@ -95,8 +95,10 @@ export class CloseTabService {
   saveDataForProfile: any;
   saveDataForRRGallery: any;
   saveDataForRRGalleryReq: any;
+  saveDataForAgentLoad:any;
 
   private val: ISidebarVals[] = [
+    { id: 1, value: ENEssentialsToSave.saveDataForAgentLoad, url: '/wr/m/load' },
     { id: 1, value: ENEssentialsToSave.saveDataForKarbari, url: '/wr/m/r/kar' },
     { id: 1, value: ENEssentialsToSave.saveDataForCounterState, url: '/wr/m/r/cs' },
     { id: 1, value: ENEssentialsToSave.saveDataForQotrManager, url: '/wr/m/r/qr' },

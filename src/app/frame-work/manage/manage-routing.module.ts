@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'dbf', loadChildren: () => import('./dbf-output/dbf-output.module').then(dbf => dbf.DbfOutputModule) },
   { path: 'fbn', loadChildren: () => import('./forbidden/forbidden.module').then(forbidden => forbidden.ForbiddenModule) },
   { path: 'dma', loadChildren: () => import('./data-mining/data-mining.module').then(dataMining => dataMining.DataMiningModule) },
+  { path: 'load', loadChildren: () => import('./load-agent-data/load-agent-data.module').then(load => load.LoadAgentDataModule) },
 ];
 
 @NgModule({
